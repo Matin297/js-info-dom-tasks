@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div>
+      <span id="hours" style="color: red"></span>:
+      <span id="minutes" style="color: green"></span>:
+      <span id="seconds" style="color: blue"></span>
+    </div>
+    <!-- click on this button calls clockStart() -->
+    <input type="button" onclick="clockStart()" value="Start" />
+
+    <!-- click on this button calls clockStop() -->
+    <input type="button" onclick="clockStop()" value="Stop" />
+
+    <script>
+      function updateTimerDisplay(hrElem, minElem, secElem) {
+        const date = new Date();
+        hrElem.textContent = date.getHours().toString().padStart(2, "0");
+        minElem.textContent = date.getMinutes().toString().padStart(2, "0");
+        secElem.textContent = date.getSeconds().toString().padStart(2, "0");
+      }
+
+      const hoursElement = document.getElementById("hours");
+      const minutesElement = document.getElementById("minutes");
+      const secondsElement = document.getElementById("seconds");
+
+      updateTimerDisplay(hoursElement, minutesElement, secondsElement);
+
+      let intervalID;
+
+      function clockStart() {
+        intervalID = setInterval(() => {
+          const date = new Date();
+          updateTimerDisplay(hoursElement, minutesElement, secondsElement);
+        }, 1000);
+      }
+
+      function clockStop() {
+        clearInterval(intervalID);
+      }
+    </script>
+  </body>
+</html>

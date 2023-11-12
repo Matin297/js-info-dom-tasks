@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="list"></ul>
+
+    <script>
+      const list = document.getElementById("list");
+
+      let userInput;
+      do {
+        userInput = prompt("List title: ");
+
+        if (userInput) {
+          const listItem = document.createElement("li");
+          listItem.textContent = userInput;
+          list.append(listItem);
+        }
+      } while (userInput);
+    </script>
+  </body>
+</html>
