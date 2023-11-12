@@ -1,0 +1,58 @@
+<html>
+  <head></head>
+  <body cz-shortcut-listen="true">
+    <form name="search">
+      <label
+        >Search the site:
+        <input type="text" name="search" fdprocessedid="vi8hbr" />
+      </label>
+      <input type="submit" value="Search!" fdprocessedid="ms1sh8" />
+    </form>
+
+    <hr />
+
+    <form name="search-person">
+      Search the visitors:
+      <table id="age-table">
+        <tbody>
+          <tr>
+            <td>Age:</td>
+            <td id="age-list">
+              <label>
+                <input type="radio" name="age" value="young" />less than
+                18</label
+              >
+              <label>
+                <input type="radio" name="age" value="mature" />18-50</label
+              >
+              <label>
+                <input type="radio" name="age" value="senior" />more than
+                50</label
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>Additionally:</td>
+            <td>
+              <input type="text" name="info[0]" fdprocessedid="k6r1ze" />
+              <input type="text" name="info[1]" fdprocessedid="5v5hmw" />
+              <input type="text" name="info[2]" fdprocessedid="p9geg8" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input type="submit" value="Search!" fdprocessedid="k22ysm" />
+    </form>
+
+    <script>
+      const table = document.getElementById("age-table");
+      const labels = document.querySelectorAll("label");
+      const age = document.getElementById("age-list").previousElementSibling;
+      const nameForm = document.getElementsByName("search")[0];
+      const nameFormFirstInput = nameForm.querySelector("input[type=text]");
+      const nameFormLastInput = nameForm.querySelector("input[type=submit]");
+    </script>
+  </body>
+</html>
