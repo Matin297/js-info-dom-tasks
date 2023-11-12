@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <div>Users:</div>
+    <ul>
+      <li>John</li>
+      <li>Pete</li>
+    </ul>
+
+    <script>
+      // The <div> DOM node?
+      const divElement = document.body.children[0];
+      // The <ul> DOM node?
+      const ulElement = divElement.nextElementSibling;
+      // The second <li> (with Pete)?
+      const peteLiElement = ulElement.lastElementChild;
+    </script>
+  </body>
+</html>

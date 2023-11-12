@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td>1:1</td>
+          <td>2:1</td>
+          <td>3:1</td>
+          <td>4:1</td>
+          <td>5:1</td>
+        </tr>
+        <tr>
+          <td>1:2</td>
+          <td>2:2</td>
+          <td>3:2</td>
+          <td>4:2</td>
+          <td>5:2</td>
+        </tr>
+        <tr>
+          <td>1:3</td>
+          <td>2:3</td>
+          <td>3:3</td>
+          <td>4:3</td>
+          <td>5:3</td>
+        </tr>
+        <tr>
+          <td>1:4</td>
+          <td>2:4</td>
+          <td>3:4</td>
+          <td>4:4</td>
+          <td>5:4</td>
+        </tr>
+        <tr>
+          <td>1:5</td>
+          <td>2:5</td>
+          <td>3:5</td>
+          <td>4:5</td>
+          <td>5:5</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const tableElement = document.body.firstElementChild;
+      const rowElements = tableElement.rows;
+
+      //   Solution #1
+      //   for (let i = 0; i < rowElements.length; i++) {
+      //     for (let j = 0; j < rowElements[i].cells.length; j++) {
+      //       if (i === j) {
+      //         rowElements[i].cells[j].style.backgroundColor = "red";
+      //       }
+      //     }
+      //   }
+
+      //   Solution #1
+      for (let i = 0; i < rowElements.length; i++) {
+        const row = rowElements[i];
+        row.cells[i].style.backgroundColor = "pink";
+      }
+    </script>
+  </body>
+</html>
