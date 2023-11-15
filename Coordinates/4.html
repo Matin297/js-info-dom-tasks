@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="4.css" />
+  </head>
+
+  <body>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+      sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet!
+      Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+      molestias sit tempore omnis recusandae esse sequi officia sapiente.
+    </p>
+
+    <blockquote>
+      Teacher: Why are you late? Student: There was a man who lost a hundred
+      dollar bill. Teacher: That's nice. Were you helping him look for it?
+      Student: No. I was standing on it.
+    </blockquote>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+      sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet!
+      Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+      molestias sit tempore omnis recusandae esse sequi officia sapiente.
+    </p>
+
+    <script>
+      function getCoords(elem) {
+        let box = elem.getBoundingClientRect();
+
+        return {
+          top: box.top + window.pageYOffset,
+          right: box.right + window.pageXOffset,
+          bottom: box.bottom + window.pageYOffset,
+          left: box.left + window.pageXOffset,
+        };
+      }
+
+      function positionAt(anchor, position, elem) {
+        const coords = getCoords(anchor);
+
+        if (position === "right-out") {
+          elem.style.left = coords.right + "px";
+          elem.style.top = coords.top + "px";
+        }
+
+        if (position === "bottom-out") {
+          elem.style.left = coords.left + "px";
+          elem.style.top = coords.bottom + "px";
+        }
+
+        if (position === "top-out") {
+          elem.style.left = coords.left + "px";
+          elem.style.top = coords.top - elem.offsetHeight + "px";
+        }
+
+        if (position === "right-in") {
+          elem.style.left = coords.right - elem.offsetWidth + "px";
+          elem.style.top = coords.top + "px";
+        }
+
+        if (position === "bottom-in") {
+          elem.style.left = coords.left + "px";
+          elem.style.top = coords.bottom - elem.offsetHeight + "px";
+        }
+
+        if (position === "top-in") {
+          elem.style.left = coords.left + "px";
+          elem.style.top = coords.top + "px";
+        }
+      }
+
+      function showNote(anchor, position, html) {
+        let note = document.createElement("div");
+        note.className = "note";
+        note.innerHTML = html;
+        anchor.append(note);
+
+        positionAt(anchor, position, note);
+      }
+
+      let blockquote = document.querySelector("blockquote");
+
+      showNote(blockquote, "top-out", "note above");
+      showNote(blockquote, "right-out", "note at the right");
+      showNote(blockquote, "bottom-out", "note below");
+
+      showNote(blockquote, "top-in", "inside note above");
+      showNote(blockquote, "right-in", "inside note at the right");
+      showNote(blockquote, "bottom-in", "inside note below");
+    </script>
+  </body>
+</html>
