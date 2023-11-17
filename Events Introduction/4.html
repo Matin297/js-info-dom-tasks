@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      #field {
+        width: 200px;
+        height: 150px;
+        border: 10px solid black;
+        background-color: #00ff00;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      #ball {
+        position: absolute;
+        transition: all 500ms linear;
+      }
+    </style>
+  </head>
+
+  <body style="height: 2000px">
+    Click on a field to move the ball there.
+    <br />
+    The ball should never leave the field.
+
+    <div id="field">
+      <img src="https://en.js.cx/clipart/ball.svg" id="ball" /> . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . .
+    </div>
+
+    <script>
+      function getCoords(elem) {
+        let box = elem.getBoundingClientRect();
+
+        return {
+          top: box.top + window.scrollY,
+          right: box.right + window.scrollX,
+          bottom: box.bottom + window.scrollY,
+          left: box.left + window.scrollX,
+        };
+      }
+
+      const field = document.getElementById("field");
+      const ball = document.getElementById("ball");
+
+      const fieldCoords = getCoords(field);
+      const fieldStyles = getComputedStyle(field);
+
+      const rightBorder =
+        fieldCoords.right -
+        parseInt(fieldStyles.borderRightWidth) -
+        ball.offsetWidth;
+
+      const bottomBorder =
+        fieldCoords.bottom -
+        parseInt(fieldStyles.borderBottomWidth) -
+        ball.offsetHeight;
+
+      const topBorder = fieldCoords.top + parseInt(fieldStyles.borderTopWidth);
+
+      const leftBorder =
+        fieldCoords.left + parseInt(fieldStyles.borderLeftWidth);
+
+      field.addEventListener("click", function (event) {
+        const ballCoords = getCoords(ball);
+
+        let x = event.clientX + window.scrollX - ball.offsetWidth / 2;
+        let y = event.clientY + window.scrollY - ball.offsetHeight / 2;
+
+        if (x > rightBorder) {
+          x = rightBorder;
+        }
+
+        if (x < leftBorder) {
+          x = leftBorder;
+        }
+
+        if (y < topBorder) {
+          y = topBorder;
+        }
+
+        if (y > bottomBorder) {
+          y = bottomBorder;
+        }
+
+        ball.style.left = x + "px";
+        ball.style.top = y + "px";
+      });
+    </script>
+  </body>
+</html>
