@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <button id="btn">▶ Sweeties (click me)!</button>
+    <ul id="list" hidden>
+      <li>Cake</li>
+      <li>Donut</li>
+      <li>Honey</li>
+    </ul>
+
+    <script>
+      const btn = document.getElementById("btn");
+      const list = document.getElementById("list");
+
+      btn.addEventListener("click", function (event) {
+        list.hidden = !list.hidden;
+        this.textContent = `${list.hidden ? "▶" : "▼"} Sweeties (click me)!`;
+      });
+    </script>
+  </body>
+</html>
