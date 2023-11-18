@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="7.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <button class="arrow left">⇦</button>
+      <button class="arrow right">⇨</button>
+
+      <ul>
+        <li><img src="https://en.js.cx/carousel/1.png" /></li>
+        <li><img src="https://en.js.cx/carousel/2.png" /></li>
+        <li><img src="https://en.js.cx/carousel/3.png" /></li>
+        <li><img src="https://en.js.cx/carousel/4.png" /></li>
+        <li><img src="https://en.js.cx/carousel/5.png" /></li>
+        <li><img src="https://en.js.cx/carousel/6.png" /></li>
+        <li><img src="https://en.js.cx/carousel/7.png" /></li>
+        <li><img src="https://en.js.cx/carousel/8.png" /></li>
+        <li><img src="https://en.js.cx/carousel/9.png" /></li>
+        <li><img src="https://en.js.cx/carousel/10.png" /></li>
+      </ul>
+    </div>
+
+    <script>
+      const wrapper = document.querySelector(".wrapper");
+      const list = wrapper.querySelector("ul");
+
+      const leftScrollButton = wrapper.querySelector("button.left");
+      leftScrollButton.addEventListener("click", () => {
+        list.scrollLeft -= list.offsetWidth;
+      });
+
+      const rightScrollButton = wrapper.querySelector("button.right");
+      rightScrollButton.addEventListener("click", () => {
+        list.scrollLeft += list.offsetWidth;
+      });
+    </script>
+  </body>
+</html>
