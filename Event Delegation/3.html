@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 4px;
+      }
+      th {
+        cursor: pointer;
+      }
+      th:hover {
+        background: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table id="grid">
+      <thead>
+        <tr>
+          <th data-type="number">Age</th>
+          <th data-type="string">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5</td>
+          <td>John</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Pete</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Ann</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Eugene</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Ilya</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const table = document.getElementById("grid");
+      const tableBody = table.tBodies[0];
+      const rows = tableBody.querySelectorAll("tr");
+
+      table.tHead.addEventListener("click", function (event) {
+        const type = event.target.dataset.type;
+
+        if (!type) return;
+
+        let sorter = (rowA, rowB) =>
+          rowB.cells[0].textContent - rowA.cells[0].textContent;
+
+        if (type === "number") {
+          sorter = (rowA, rowB) =>
+            Number(rowA.cells[0].textContent) -
+            Number(rowB.cells[0].textContent);
+        }
+
+        tableBody.append(...Array.from(rows).sort(sorter));
+      });
+    </script>
+  </body>
+</html>
